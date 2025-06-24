@@ -1,0 +1,62 @@
+.decrypt-panel {
+  max-width: 600px;
+  margin: 0 auto;
+}
+
+.decrypt-panel h2 {
+  font-size: 1.5rem;
+  margin-bottom: 1.5rem;
+  color: #0f172a;
+}
+
+.decrypt-group {
+  margin-bottom: 1rem;
+}
+
+.decrypt-label {
+  display: flex;
+  align-items: center;
+  font-weight: 600;
+  margin-bottom: 6px;
+}
+
+.decrypt-input,
+.decrypt-textarea {
+  width: 100%;
+  padding: 0.75rem;
+  border: 1px solid #cbd5e1;
+  border-radius: 8px;
+  font-size: 1rem;
+  resize: vertical;
+}
+
+.decrypt-input {
+  resize: none;
+}
+
+.decrypt-button-wrapper {
+  text-align: right;
+  margin-bottom: 1.5rem;
+}
+
+.decrypt-button {
+  background-color: #f59e0b;
+  color: #fff;
+  padding: 0.6rem 1.2rem;
+  border: none;
+  border-radius: 6px;
+  font-weight: 600;
+  cursor: pointer;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.1);
+  transition: background-color 0.2s ease;
+}
+
+.decrypt-button:disabled {
+  background-color: #94a3b8;
+  cursor: not-allowed;
+  opacity: 0.7;
+}
+
+.decrypt-output {
+  background-color: #f1f5f9;
+}

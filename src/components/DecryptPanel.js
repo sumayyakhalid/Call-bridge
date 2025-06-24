@@ -1,6 +1,7 @@
 import React, { useState } from "react";
 import { decryptNote } from "../utils/crypto";
 import { FaLockOpen, FaKey } from "react-icons/fa";
+import "./decryptPanel.css";
 
 const DecryptPanel = () => {
   const [encrypted, setEncrypted] = useState("");
@@ -13,22 +14,11 @@ const DecryptPanel = () => {
   };
 
   return (
-    <div style={{ maxWidth: 600, margin: "0 auto" }}>
-      <h2
-        style={{ fontSize: "1.5rem", marginBottom: "1.5rem", color: "#0f172a" }}
-      >
-        🔍 Verification Panel
-      </h2>
+    <div className="decrypt-panel">
+      <h2>🔍 Verification Panel</h2>
 
-      <div style={{ marginBottom: "1rem" }}>
-        <label
-          style={{
-            display: "flex",
-            alignItems: "center",
-            fontWeight: 600,
-            marginBottom: 6,
-          }}
-        >
+      <div className="decrypt-group">
+        <label className="decrypt-label">
           <FaLockOpen style={{ marginRight: 8 }} />
           Encrypted String
         </label>
@@ -37,26 +27,12 @@ const DecryptPanel = () => {
           value={encrypted}
           onChange={(e) => setEncrypted(e.target.value)}
           placeholder="Paste the encrypted text here..."
-          style={{
-            width: "100%",
-            padding: "0.75rem",
-            border: "1px solid #cbd5e1",
-            borderRadius: 8,
-            resize: "vertical",
-            fontSize: "1rem",
-          }}
+          className="decrypt-textarea"
         />
       </div>
 
-      <div style={{ marginBottom: "1rem" }}>
-        <label
-          style={{
-            display: "flex",
-            alignItems: "center",
-            fontWeight: 600,
-            marginBottom: 6,
-          }}
-        >
+      <div className="decrypt-group">
+        <label className="decrypt-label">
           <FaKey style={{ marginRight: 8 }} />
           Secret Key
         </label>
@@ -65,53 +41,30 @@ const DecryptPanel = () => {
           value={key}
           onChange={(e) => setKey(e.target.value)}
           placeholder="Enter the secret key"
-          style={{
-            width: "100%",
-            padding: "0.75rem",
-            border: "1px solid #cbd5e1",
-            borderRadius: 8,
-            fontSize: "1rem",
-          }}
+          className="decrypt-input"
         />
       </div>
 
-      <div style={{ textAlign: "right", marginBottom: "1.5rem" }}>
+      <div className="decrypt-button-wrapper">
         <button
           onClick={handleDecrypt}
-          style={{
-            backgroundColor: "#f59e0b",
-            color: "#fff",
-            padding: "0.6rem 1.2rem",
-            border: "none",
-            borderRadius: 6,
-            fontWeight: 600,
-            cursor: "pointer",
-            boxShadow: "0 2px 6px rgba(0,0,0,0.1)",
-          }}
+          className="decrypt-button"
+          disabled={!encrypted || !key}
         >
           🔓 Decrypt Note
         </button>
       </div>
 
-      {/* Output */}
       {decrypted && (
         <div>
-          <label style={{ fontWeight: 600, marginBottom: 6, display: "block" }}>
+          <label className="decrypt-label" style={{ display: "block" }}>
             Decrypted Note
           </label>
           <textarea
             value={decrypted}
             readOnly
             placeholder="Decrypted output will appear here"
-            style={{
-              width: "100%",
-              padding: "0.75rem",
-              border: "1px solid #cbd5e1",
-              borderRadius: 8,
-              resize: "vertical",
-              backgroundColor: "#f1f5f9",
-              fontSize: "1rem",
-            }}
+            className="decrypt-textarea decrypt-output"
           />
         </div>
       )}

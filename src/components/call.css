@@ -1,0 +1,53 @@
+.jitsi-room {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 48px 0;
+  transition: background 0.3s;
+  height: 86.3vh;
+  justify-content: center;
+  background: linear-gradient(135deg, rgb(94, 134, 151) 0%, rgb(64, 84, 128) 100%);
+  box-shadow: 0 8px 32px rgba(31, 41, 55, 0.15);
+}
+
+.jitsi-room.active {
+  background: #fff;
+  box-shadow: none;
+  height: 100vh;
+  padding: 0;
+  justify-content: flex-start;
+}
+
+.jitsi-heading {
+  margin-bottom: 32px;
+  color: #fff;
+  font-weight: 600;
+  font-size: 2rem;
+  letter-spacing: 1px;
+  text-shadow: 0 2px 8px rgba(31, 41, 55, 0.15);
+}
+
+.call-button {
+  font-size: 1.25rem;
+  padding: 18px 48px;
+  background: linear-gradient(90deg, #38bdf8 0%, #3F6AC9 100%);
+  color: #fff;
+  border: none;
+  border-radius: 32px;
+  cursor: pointer;
+  font-weight: 700;
+  box-shadow: 0 4px 16px rgba(31, 41, 55, 0.10);
+  transition: background 0.2s, transform 0.1s;
+  outline: none;
+  margin-bottom: 12px;
+}
+
+.call-button:hover {
+  background: linear-gradient(135deg, rgb(200, 201, 235) 20%, #3b82f6 80%);
+}
+
+.call-note {
+  color: #e0e7ef;
+  margin-top: 18px;
+  font-size: 1rem;
+}
