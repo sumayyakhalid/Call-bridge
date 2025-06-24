@@ -2,6 +2,13 @@ import React, { useState } from "react";
 import EncryptPanel from "./components/EncryptPanel";
 import CallPanel from "./components/CallPanel";
 import DecryptPanel from "./components/DecryptPanel";
+import { FaLock, FaPhone, FaPhoneAlt, FaUnlock } from "react-icons/fa"; // Using Font Awesome icons
+
+const tabList = [
+  { key: "encrypt", label: "Encrypt", icon: <FaLock /> },
+  { key: "call", label: "Call", icon: <FaPhoneAlt /> },
+  { key: "decrypt", label: "Decrypt", icon: <FaUnlock /> },
+];
 
 function App() {
   const [activeTab, setActiveTab] = useState("encrypt");
@@ -21,61 +28,75 @@ function App() {
   };
 
   return (
-    <div style={{ display: "flex", height: "100vh", fontFamily: "sans-serif" }}>
+    <div
+      style={{
+        display: "flex",
+        height: "100vh",
+        fontFamily: "Segoe UI, sans-serif",
+        backgroundColor: "#f9f9f9",
+      }}
+    >
       {/* Sidebar */}
       <div
         style={{
-          width: 200,
-          backgroundColor: "#f4f4f4",
-          padding: 20,
-          borderRight: "1px solid #ddd",
+          width: 240,
+          backgroundColor: "#1e293b", // slate-800
+          color: "#fff",
+          padding: "1.5rem",
+          display: "flex",
+          flexDirection: "column",
         }}
       >
-        <h3>🔐 Secure Call</h3>
-        <nav
-          style={{
-            display: "flex",
-            flexDirection: "column",
-            gap: 10,
-            marginTop: 20,
-          }}
-        >
-          {/* <button onClick={() => setActiveTab("encrypt")}>Encrypt</button> */}
+        <h2 style={{ marginBottom: "2rem", color: "#38bdf8" }}>
+          🔐 Secure Bridge
+        </h2>
+
+        {tabList.map((tab) => (
           <button
-            onClick={() => setActiveTab("encrypt")}
+            key={tab.key}
+            onClick={() => setActiveTab(tab.key)}
             style={{
-              backgroundColor: activeTab === "encrypt" ? "#ddd" : "transparent",
+              backgroundColor:
+                activeTab === tab.key ? "#38bdf8" : "transparent",
+              color: activeTab === tab.key ? "#000" : "#fff",
+              display: "flex",
+              alignItems: "center",
+              gap: "0.75rem",
+              padding: "0.75rem 1rem",
+              marginBottom: "0.5rem",
               border: "none",
-              textAlign: "left",
-              padding: "8px 12px",
-              borderRadius: 4,
+              borderRadius: "8px",
               cursor: "pointer",
+              fontSize: "1rem",
+              transition: "0.2s ease",
             }}
           >
-            Encrypt
+            {tab.icon}
+            {tab.label}
           </button>
-
-          {/* <button onClick={() => setActiveTab("call")}>Call</button> */}
-          <button
-            onClick={() => setActiveTab("call")}
-            style={{
-              backgroundColor: activeTab === "call" ? "#ddd" : "transparent",
-              border: "none",
-              textAlign: "left",
-              padding: "8px 12px",
-              borderRadius: 4,
-              cursor: "pointer",
-            }}
-          >
-            Call
-          </button>
-
-          <button onClick={() => setActiveTab("decrypt")}>Decrypt</button>
-        </nav>
+        ))}
       </div>
 
-      {/* Main Panel */}
-      <div style={{ flex: 1, padding: 20 }}>{renderPanel()}</div>
+      {/* Main Content */}
+      <div
+        style={{
+          flex: 1,
+          padding: "2rem",
+          backgroundColor: "#fff",
+          overflowY: "auto",
+        }}
+      >
+        <div
+          style={{
+            background: "#f1f5f9", // slate-100
+            padding: "1.5rem",
+            borderRadius: "12px",
+            boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
+          }}
+        >
+          {renderPanel()}
+        </div>
+      </div>
     </div>
   );
 }
