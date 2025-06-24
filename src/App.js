@@ -1,8 +1,9 @@
 import React, { useState } from "react";
 import EncryptPanel from "./components/EncryptPanel";
 import DecryptPanel from "./components/DecryptPanel";
-import { FaLock, FaPhone, FaPhoneAlt, FaUnlock } from "react-icons/fa"; // Using Font Awesome icons
 import JitsiRoom from "./components/CallPanel";
+import { FaLock, FaPhoneAlt, FaUnlock } from "react-icons/fa";
+import "./App.css";
 
 const tabList = [
   { key: "call", label: "Call", icon: <FaPhoneAlt /> },
@@ -28,47 +29,14 @@ function App() {
   };
 
   return (
-    <div
-      style={{
-        display: "flex",
-        height: "100vh",
-        fontFamily: "Segoe UI, sans-serif",
-        backgroundColor: "#f9f9f9",
-      }}
-    >
-      <div
-        style={{
-          width: 240,
-          backgroundColor: "#1e293b",
-          color: "#fff",
-          padding: "1.5rem",
-          display: "flex",
-          flexDirection: "column",
-        }}
-      >
-        <h2 style={{ marginBottom: "2rem", color: "#38bdf8" }}>
-          🔐 Secure Bridge
-        </h2>
-
+    <div className="app-container">
+      <div className="sidebar">
+        <h2>🔐 Secure Bridge</h2>
         {tabList.map((tab) => (
           <button
             key={tab.key}
             onClick={() => setActiveTab(tab.key)}
-            style={{
-              backgroundColor:
-                activeTab === tab.key ? "#38bdf8" : "transparent",
-              color: activeTab === tab.key ? "#000" : "#fff",
-              display: "flex",
-              alignItems: "center",
-              gap: "0.75rem",
-              padding: "0.75rem 1rem",
-              marginBottom: "0.5rem",
-              border: "none",
-              borderRadius: "8px",
-              cursor: "pointer",
-              fontSize: "1rem",
-              transition: "0.2s ease",
-            }}
+            className={`tab-button ${activeTab === tab.key ? "active" : ""}`}
           >
             {tab.icon}
             {tab.label}
@@ -76,19 +44,11 @@ function App() {
         ))}
       </div>
 
-      <div
-        style={{
-          flex: 1,
-          backgroundColor: "#fff",
-        }}
-      >
+      <div className="panel-container">
         <div
-          style={{
-            background: "#f1f5f9", // slate-100
-            padding: activeTab === "call" ? 0 : "2rem",
-            overflow: "hidden",
-            boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
-          }}
+          className={`panel-wrapper ${
+            activeTab === "call" ? "call-panel" : ""
+          }`}
         >
           {renderPanel()}
         </div>
