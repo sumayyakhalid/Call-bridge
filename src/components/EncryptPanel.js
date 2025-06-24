@@ -21,7 +21,6 @@ const EncryptPanel = ({ onEncrypt }) => {
         📝 Secure Context Panel
       </h2>
 
-      {/* Note Input */}
       <div style={{ marginBottom: "1rem" }}>
         <label
           style={{
@@ -50,7 +49,6 @@ const EncryptPanel = ({ onEncrypt }) => {
         />
       </div>
 
-      {/* Secret Key Input */}
       <div style={{ marginBottom: "1rem" }}>
         <label
           style={{
@@ -78,7 +76,6 @@ const EncryptPanel = ({ onEncrypt }) => {
         />
       </div>
 
-      {/* Encrypt Button */}
       <div style={{ textAlign: "right", marginBottom: "1.5rem" }}>
         <button
           onClick={handleEncrypt}
@@ -99,7 +96,6 @@ const EncryptPanel = ({ onEncrypt }) => {
         </button>
       </div>
 
-      {/* Output */}
       <div>
         <label style={{ fontWeight: 600, marginBottom: 6, display: "block" }}>
           Encrypted String

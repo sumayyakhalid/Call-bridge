@@ -1,17 +1,17 @@
 import React, { useState } from "react";
 import EncryptPanel from "./components/EncryptPanel";
-import CallPanel from "./components/CallPanel";
 import DecryptPanel from "./components/DecryptPanel";
 import { FaLock, FaPhone, FaPhoneAlt, FaUnlock } from "react-icons/fa"; // Using Font Awesome icons
+import JitsiRoom from "./components/CallPanel";
 
 const tabList = [
-  { key: "encrypt", label: "Encrypt", icon: <FaLock /> },
   { key: "call", label: "Call", icon: <FaPhoneAlt /> },
+  { key: "encrypt", label: "Encrypt", icon: <FaLock /> },
   { key: "decrypt", label: "Decrypt", icon: <FaUnlock /> },
 ];
 
 function App() {
-  const [activeTab, setActiveTab] = useState("encrypt");
+  const [activeTab, setActiveTab] = useState("call");
   const [encrypted, setEncrypted] = useState("");
 
   const renderPanel = () => {
@@ -19,7 +19,7 @@ function App() {
       case "encrypt":
         return <EncryptPanel onEncrypt={setEncrypted} />;
       case "call":
-        return <CallPanel encryptedData={encrypted} />;
+        return <JitsiRoom roomName={process.env.REACT_APP_ROOM_NAME} />;
       case "decrypt":
         return <DecryptPanel encryptedData={encrypted} />;
       default:
@@ -36,11 +36,10 @@ function App() {
         backgroundColor: "#f9f9f9",
       }}
     >
-      {/* Sidebar */}
       <div
         style={{
           width: 240,
-          backgroundColor: "#1e293b", // slate-800
+          backgroundColor: "#1e293b",
           color: "#fff",
           padding: "1.5rem",
           display: "flex",
@@ -77,20 +76,17 @@ function App() {
         ))}
       </div>
 
-      {/* Main Content */}
       <div
         style={{
           flex: 1,
-          padding: "2rem",
           backgroundColor: "#fff",
-          overflowY: "auto",
         }}
       >
         <div
           style={{
             background: "#f1f5f9", // slate-100
-            padding: "1.5rem",
-            borderRadius: "12px",
+            padding: activeTab === "call" ? 0 : "2rem",
+            overflow: "hidden",
             boxShadow: "0 2px 8px rgba(0,0,0,0.05)",
           }}
         >

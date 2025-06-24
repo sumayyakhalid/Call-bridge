@@ -20,7 +20,6 @@ const DecryptPanel = () => {
         🔍 Verification Panel
       </h2>
 
-      {/* Encrypted Input */}
       <div style={{ marginBottom: "1rem" }}>
         <label
           style={{
@@ -49,7 +48,6 @@ const DecryptPanel = () => {
         />
       </div>
 
-      {/* Secret Key Input */}
       <div style={{ marginBottom: "1rem" }}>
         <label
           style={{
@@ -77,12 +75,11 @@ const DecryptPanel = () => {
         />
       </div>
 
-      {/* Decrypt Button */}
       <div style={{ textAlign: "right", marginBottom: "1.5rem" }}>
         <button
           onClick={handleDecrypt}
           style={{
-            backgroundColor: "#f59e0b", // amber-500
+            backgroundColor: "#f59e0b",
             color: "#fff",
             padding: "0.6rem 1.2rem",
             border: "none",
