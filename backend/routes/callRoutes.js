@@ -5,6 +5,6 @@ import * as callController from "../controllers/callController.js";
 const router = Router();
 
 router.post("/connect", callController.getCall);
-router.get("/twiml", callController.getTwiml);
+router.post("/twiml", callController.getTwiml);
 
 export default router;
